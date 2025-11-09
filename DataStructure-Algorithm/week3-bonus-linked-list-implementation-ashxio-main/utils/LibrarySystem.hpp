@@ -4,8 +4,6 @@
 #include "Member.hpp"
 #include <vector>
 
-using namespace std;
-
 class LibrarySystem{
 private:
     std::vector<Member*> members;
@@ -24,9 +22,6 @@ public:
     Member* findMember(std::string name){
         for(Member* member: members){
             // your code here
-            if (member->getName() == name) {
-                return member;
-            }
         }
         return nullptr;
     }
