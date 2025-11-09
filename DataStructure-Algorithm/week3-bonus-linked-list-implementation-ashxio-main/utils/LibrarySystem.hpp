@@ -3,44 +3,44 @@
 
 #include "Member.hpp"
 #include <vector>
-
+#include <string>
+#include <iostream>
 using namespace std;
 
-class LibrarySystem{
+class LibrarySystem {
 private:
-    std::vector<Member*> members;
+    vector<Member*> members;
 
 public:
-    ~LibrarySystem(){
-        for(Member* member: members){
+    LibrarySystem() {} // ✅ add this constructor
+
+    ~LibrarySystem() {
+        for (Member* member : members) {
             delete member;
         }
     }
 
-    void addMember(std::string name){
+    void addMember(string name) {
         members.push_back(new Member(name));
     }
 
-    Member* findMember(std::string name){
-        for(Member* member: members){
-            // your code here
-            if (member->getName() == name) {
+    Member* findMember(string name) const {
+        for (Member* member : members) {
+            if (member->getName() == name)
                 return member;
-            }
         }
         return nullptr;
     }
 
-    void displayMemberBooks(std::string name){
+    void displayMemberBooks(string name) const {
         Member* member = findMember(name);
-        if(member){
-            std::cout<<member->getName() << ":" <<std::endl;
+        if (member) {
+            cout << member->getName() << ":" << endl;
             member->displayBorrowInfo();
-        }else{
-            std::cout<<"Member not found"<<std::endl;
+        } else {
+            cout << "Member not found" << endl;
         }
     }
 };
-
 
 #endif
